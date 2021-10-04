@@ -1,5 +1,6 @@
 require "csv"
 
+Page.delete_all
 Movie.delete_all
 ProductionCompany.delete_all
 
@@ -29,6 +30,18 @@ movies.each do |m|
     puts "Invalid Production Company: #{m['production_company']} for movie: #{m['original_title']}"
   end
 end
+
+Page.create(
+  title:     "Contact Us",
+  content:   "If you like this site and want to chat about the project or the data, email me at: obviously_fake@email.com",
+  permalink: "contact"
+)
+
+Page.create(
+  title:     "About the data",
+  content:   "The data powering this website was stolen (err.. provided) by an IMDB Kaggle dataset!",
+  permalink: "about_the_data"
+)
 
 puts "Created #{ProductionCompany.count} Production Companies"
 puts "Created #{Movie.count} movies."
